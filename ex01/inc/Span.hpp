@@ -6,7 +6,7 @@
 /*   By: mchemari <mchemari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:18:43 by mchemari          #+#    #+#             */
-/*   Updated: 2026/05/23 17:42:14 by mchemari         ###   ########.fr       */
+/*   Updated: 2026/05/23 20:13:37 by mchemari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,53 @@
 #define SPAN_HPP
 
 #include <vector>
+#include <algorithm>
+
+class TooManyElementException: public std::exception
+{
+	public:
+		virtual const char* what() const throw()
+		{
+			return ("Too many elements in that container.");
+		}
+};
+
+class NoSpanException: public std::exception
+{
+	public:
+		virtual const char* what() const throw()
+		{
+			return ("Too few elements to have span.");
+		}
+};
 
 class Span
 {
-    public:
-        Span(unsigned int N);
-        Span(const Span& other);
-        Span& operator=(const Span& other); 
-        ~Span();
+	public:
+		Span();
+		Span(unsigned int N);
+		Span(const Span& other);
+		Span& operator=(const Span& other); 
+		~Span();
 
 		void addNumber(int n);
+		int shortestSpan();
+		int longestSpan();
 
-    private:
-        std::vector<int> _v;
-        unsigned int _maxint;
+		template <typename Iterator>
+		void addMultipleNumber(Iterator begin, Iterator end)
+		{
+			while (begin != end)
+			{
+				addNumber(*begin);
+				++begin;
+			}
+		}
 
-        Span();
+	private:
+		std::vector<int> _v;
+		unsigned int _maxint;
+
 };
 
 #endif

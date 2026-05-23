@@ -8,7 +8,7 @@ GREEN           =   \033[32m
 BLUE            =   \033[34m
 
 SRCS_FILES      =   main.cpp \
-					span.cpp
+					Span.cpp
 
 SRCS_DIR		=       src
 HEADERS_DIR     =       inc

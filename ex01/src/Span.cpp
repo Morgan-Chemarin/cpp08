@@ -6,11 +6,16 @@
 /*   By: mchemari <mchemari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:18:37 by mchemari          #+#    #+#             */
-/*   Updated: 2026/05/23 17:44:34 by mchemari         ###   ########.fr       */
+/*   Updated: 2026/05/23 20:19:39 by mchemari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
+Span::Span(): _maxint(0)
+{
+}
+
 
 Span::Span(unsigned int N): _maxint(N)
 {
@@ -39,6 +44,33 @@ Span::~Span()
 void Span::addNumber(int n)
 {
     if (_v.size() == _maxint)
-        throw std::exception();
+        throw TooManyElementException();
     _v.push_back(n);
+}
+
+int Span::shortestSpan()
+{
+    if (_v.size() < 2)
+        throw NoSpanException();
+
+    int res;
+    std::vector<int> tmp = _v;
+
+    std::sort(tmp.begin(), tmp.end());
+    for (unsigned long int i = 1; i < tmp.size(); i++)
+    {
+        if (tmp[i] - tmp[i - 1] < res)
+            res = tmp[i] - tmp[i - 1];
+    }
+    return (res);
+}
+
+int Span::longestSpan()
+{
+    if (_v.size() < 2)
+        throw NoSpanException();
+    int min = *(std::min_element(_v.begin(), _v.end()));
+    int max = *(std::max_element(_v.begin(), _v.end()));
+
+    return (max - min);
 }
