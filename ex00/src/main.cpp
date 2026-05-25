@@ -6,17 +6,14 @@
 /*   By: mchemari <mchemari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:22:11 by mchemari          #+#    #+#             */
-/*   Updated: 2026/05/23 17:20:08 by mchemari         ###   ########.fr       */
+/*   Updated: 2026/05/25 12:36:37 by mchemari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "easyfind.hpp"
 #include <iostream>
 #include <vector>
 #include <list>
-#include <algorithm>
-#include <exception>
-
-#include "easyfind.hpp"
 
 int main()
 {
@@ -33,7 +30,7 @@ int main()
 		v.push_back(9);
 		
 		it = easyfind(v, 6);
-		std::cout << "Occurence " << *(it) << " found." << std::endl;
+		std::cout << "Occurrence " << *(it) << " found." << std::endl;
 
 		it = easyfind(v, 42);
 	}
@@ -57,7 +54,7 @@ int main()
 		l.push_back(9);
 		
 		it = easyfind(l, 6);
-		std::cout << "Occurence " << *(it) << " found." << std::endl;
+		std::cout << "Occurrence " << *(it) << " found." << std::endl;
 
 		it = easyfind(l, 42);
 	}

@@ -6,14 +6,17 @@
 /*   By: mchemari <mchemari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:20:02 by mchemari          #+#    #+#             */
-/*   Updated: 2026/05/23 17:09:49 by mchemari         ###   ########.fr       */
+/*   Updated: 2026/05/25 12:36:42 by mchemari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
-class NoOccurenceFoundException: public std::exception
+#include <algorithm>
+#include <exception>
+
+class NoOccurrenceFoundException: public std::exception
 {
     public:
         virtual const char* what() const throw()
@@ -27,7 +30,7 @@ typename T::iterator easyfind(T& container, int n)
 {
     typename T::iterator i = std::find(container.begin(), container.end(), n);
     if (i == container.end())
-        throw NoOccurenceFoundException();
+        throw NoOccurrenceFoundException();
     return (i);
 }
 
