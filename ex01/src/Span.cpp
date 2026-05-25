@@ -6,7 +6,7 @@
 /*   By: mchemari <mchemari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:18:37 by mchemari          #+#    #+#             */
-/*   Updated: 2026/05/23 20:19:39 by mchemari         ###   ########.fr       */
+/*   Updated: 2026/05/25 13:46:16 by mchemari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void Span::addNumber(int n)
     _v.push_back(n);
 }
 
-int Span::shortestSpan()
+int Span::shortestSpan() const
 {
     if (_v.size() < 2)
         throw NoSpanException();
 
-    int res;
     std::vector<int> tmp = _v;
+    int res = tmp[1] - tmp[0];
 
     std::sort(tmp.begin(), tmp.end());
     for (unsigned long int i = 1; i < tmp.size(); i++)
@@ -65,7 +65,7 @@ int Span::shortestSpan()
     return (res);
 }
 
-int Span::longestSpan()
+int Span::longestSpan() const
 {
     if (_v.size() < 2)
         throw NoSpanException();

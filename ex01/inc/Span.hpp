@@ -6,7 +6,7 @@
 /*   By: mchemari <mchemari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:18:43 by mchemari          #+#    #+#             */
-/*   Updated: 2026/05/23 20:13:37 by mchemari         ###   ########.fr       */
+/*   Updated: 2026/05/25 13:46:07 by mchemari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <exception>
 
 class TooManyElementException: public std::exception
 {
@@ -44,8 +45,8 @@ class Span
 		~Span();
 
 		void addNumber(int n);
-		int shortestSpan();
-		int longestSpan();
+		int shortestSpan() const;
+		int longestSpan() const;
 
 		template <typename Iterator>
 		void addMultipleNumber(Iterator begin, Iterator end)
